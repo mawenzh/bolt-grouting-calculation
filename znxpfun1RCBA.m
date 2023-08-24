@@ -1,0 +1,13 @@
+function ydotRCBA=znxpfun1RCBA(tRCBA,yRCBA)
+global v kPsi rB G kr sigmarRA1 sigmathiRA1 ...
+    ZRB C1RCBA
+
+sigmarRA1=C1RCBA*tRCBA^kr*kr/((kr - 1)*tRCBA^2)-(C1RCBA*tRCBA^kr/(kr - 1) - ZRB)/tRCBA^2;
+
+sigmathiRA1=(C1RCBA*tRCBA^kr*kr/((kr - 1)*tRCBA^2)-(C1RCBA*tRCBA^kr/(kr - 1) - ZRB)/tRCBA^2)*kr;
+
+ydotRCBA=[yRCBA(2);...
+-((-1/tRCBA)*yRCBA(2)*(kPsi-1))-...
+(rB*((v*kPsi-kPsi-v)/(2*G))*(sigmathiRA1))-...
+(rB*((1-v+v*kPsi)/(2*G))*(sigmarRA1))];
+end
